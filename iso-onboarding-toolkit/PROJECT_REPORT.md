@@ -198,8 +198,3 @@ Then run:
 - HTML/PDF partner report with charts and DST timelines.
 - Warehouse export (Parquet) for downstream analytics.
 
-## Why This Now Looks “Industry-Grade”
-- Handles real CAISO feed quirks (schema variance, DST edge cases, notes, XLSX inputs).
-- Produces explicit trust signals for operational decisioning.
-- Is pipeline-ready with clear DAG execution and scheduling.
-- Is config-driven to scale beyond CAISO without rewriting core logic.
