@@ -1,0 +1,3 @@
+[console_scripts]
+iso-toolkit = iso_toolkit.cli:main
+iso-trust = iso_trust.cli:main

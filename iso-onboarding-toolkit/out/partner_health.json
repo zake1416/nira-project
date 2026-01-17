@@ -1,0 +1,117 @@
+{
+  "generated_at_utc": "2026-01-17T01:44:18.771879Z",
+  "iso": "CAISO",
+  "input_files": [
+    "data/historical-ems-hourly-load-for-april-2024.xlsx",
+    "data/historical-ems-hourly-load-for-april-2025.xlsx",
+    "data/historical-ems-hourly-load-for-august-2024.xlsx",
+    "data/historical-ems-hourly-load-for-august-2025.xlsx",
+    "data/historical-ems-hourly-load-for-december-2024.xlsx",
+    "data/historical-ems-hourly-load-for-february-2025.xlsx",
+    "data/historical-ems-hourly-load-for-january-2025.xlsx",
+    "data/historical-ems-hourly-load-for-july-2024.xlsx",
+    "data/historical-ems-hourly-load-for-july-2025.xlsx",
+    "data/historical-ems-hourly-load-for-june-2024.xlsx",
+    "data/historical-ems-hourly-load-for-june-2025.xlsx",
+    "data/historical-ems-hourly-load-for-march-2025.xlsx",
+    "data/historical-ems-hourly-load-for-may-2024.xlsx",
+    "data/historical-ems-hourly-load-for-may-2025.xlsx",
+    "data/historical-ems-hourly-load-for-november-2024.xlsx",
+    "data/historical-ems-hourly-load-for-october-2024.xlsx",
+    "data/historical-ems-hourly-load-for-october-2025.xlsx",
+    "data/historical-ems-hourly-load-for-september-2024.xlsx",
+    "data/historical-ems-hourly-load-for-september-2025.xlsx",
+    "data/historicalemshourlyload-2019.xlsx",
+    "data/historicalemshourlyload-2020.xlsx",
+    "data/historicalemshourlyload-2021.xlsx",
+    "data/historicalemshourlyload-2022.xlsx",
+    "data/historicalemshourlyloadfor2023.xlsx",
+    "data/historicalemshourlyloadforfebruary2024.xlsx",
+    "data/historicalemshourlyloadforjanuary2024.xlsx",
+    "data/historicalemshourlyloadformarch2024.xlsx"
+  ],
+  "issue_counts": {
+    "HIGH": 3,
+    "MEDIUM": 2,
+    "LOW": 0
+  },
+  "issues": [
+    {
+      "severity": "HIGH",
+      "check": "normalize",
+      "message": "34 rows have unparseable dates in 'Date'.",
+      "hint": "Verify date format or normalize upstream before ingestion."
+    },
+    {
+      "severity": "HIGH",
+      "check": "normalize",
+      "message": "42393 rows have invalid hours in 'HE'.",
+      "hint": "Ensure hour column is numeric and within 1-24."
+    },
+    {
+      "severity": "HIGH",
+      "check": "consistency",
+      "message": "41 hours exceed consistency thresholds (abs>250.0 MW or pct>1.00%).",
+      "hint": "Investigate mismatched totals or zonal corrections in the source feed."
+    },
+    {
+      "severity": "MEDIUM",
+      "check": "completeness",
+      "message": "Missing 265 hourly observations across zones. Completeness 99.71%.",
+      "hint": "Identify gaps by date/zone and reconcile missing hours with ISO source files."
+    },
+    {
+      "severity": "MEDIUM",
+      "check": "sanity",
+      "message": "10292 hourly changes exceed spike thresholds.",
+      "hint": "Review sudden load jumps and verify they align with ISO event notes."
+    }
+  ],
+  "metrics": {
+    "rows": 87720,
+    "completeness": {
+      "expected_rows": 87720,
+      "actual_rows": 87465,
+      "completeness_pct": 0.997093023255814,
+      "missing_hours_total": 265,
+      "missing_zones_per_hour": 0,
+      "missing_by_day": {
+        "2019-01-01": 5,
+        "2019-01-02": 5,
+        "2019-11-03": 125,
+        "2020-03-08": 5,
+        "2020-11-01": 125
+      }
+    },
+    "consistency": {
+      "violation_count": 41,
+      "max_abs_error": 21766.06655761645,
+      "max_pct_error": 1.0000001839652732,
+      "mean_abs_error": 8.682046035665397,
+      "mean_pct_error": 0.00038224796325325093
+    },
+    "sanity": {
+      "negative_count": 0,
+      "spike_count": 10292,
+      "flatline_count": 0
+    },
+    "dst": {
+      "total_days": 731,
+      "normal_days": 727,
+      "spring_forward_days": 2,
+      "fall_back_days": 2,
+      "dst_days": 4
+    }
+  },
+  "trust": {
+    "score": 0.0,
+    "level": "DO_NOT_USE",
+    "breakdown": {
+      "missing_hours": 265,
+      "missing_zones": 0,
+      "dst_days": 4,
+      "consistency_violations": 41,
+      "anomaly_events": 10292
+    }
+  }
+}

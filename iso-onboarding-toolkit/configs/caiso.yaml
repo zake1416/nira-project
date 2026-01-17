@@ -1,0 +1,32 @@
+iso: "CAISO"
+timezone: "America/Los_Angeles"
+
+date_col: "Date"
+hour_col: "HE"
+hour_type: "HE"
+
+zones:
+  - "PGE"
+  - "SCE"
+  - "SDGE"
+  - "VEA"
+  - "CAISO Total"
+
+total_zone: "CAISO Total"
+
+note_col: "Note"
+expected_frequency: "1h"
+
+thresholds:
+  consistency_abs_mw: 250.0
+  consistency_pct: 0.01
+  spike_abs_mw: 2500.0
+  spike_pct: 0.08
+  flatline_window_hours: 6
+
+penalties:
+  missing_hour: 0.75
+  missing_zone: 0.5
+  dst_day: 2.0
+  consistency_violation: 1.5
+  anomaly: 1.0

@@ -1,0 +1,8 @@
+feed_name: "Example_ISO_Load"
+timestamp_col: "timestamp"
+timezone: "America/Los_Angeles"
+expected_frequency: "5min"
+value_col: "load"
+value_unit: "MW"
+required_columns: ["timestamp", "load"]
+optional_columns: ["unit"]

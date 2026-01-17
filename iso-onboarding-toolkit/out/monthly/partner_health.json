@@ -1,0 +1,112 @@
+{
+  "generated_at_utc": "2026-01-17T01:44:15.326234Z",
+  "iso": "CAISO",
+  "input_files": [
+    "data/historical-ems-hourly-load-for-april-2024.xlsx",
+    "data/historical-ems-hourly-load-for-april-2025.xlsx",
+    "data/historical-ems-hourly-load-for-august-2024.xlsx",
+    "data/historical-ems-hourly-load-for-august-2025.xlsx",
+    "data/historical-ems-hourly-load-for-december-2024.xlsx",
+    "data/historical-ems-hourly-load-for-february-2025.xlsx",
+    "data/historical-ems-hourly-load-for-january-2025.xlsx",
+    "data/historical-ems-hourly-load-for-july-2024.xlsx",
+    "data/historical-ems-hourly-load-for-july-2025.xlsx",
+    "data/historical-ems-hourly-load-for-june-2024.xlsx",
+    "data/historical-ems-hourly-load-for-june-2025.xlsx",
+    "data/historical-ems-hourly-load-for-march-2025.xlsx",
+    "data/historical-ems-hourly-load-for-may-2024.xlsx",
+    "data/historical-ems-hourly-load-for-may-2025.xlsx",
+    "data/historical-ems-hourly-load-for-november-2024.xlsx",
+    "data/historical-ems-hourly-load-for-october-2024.xlsx",
+    "data/historical-ems-hourly-load-for-october-2025.xlsx",
+    "data/historical-ems-hourly-load-for-september-2024.xlsx",
+    "data/historical-ems-hourly-load-for-september-2025.xlsx"
+  ],
+  "issue_counts": {
+    "HIGH": 2,
+    "MEDIUM": 4,
+    "LOW": 0
+  },
+  "issues": [
+    {
+      "severity": "HIGH",
+      "check": "normalize",
+      "message": "34 rows have unparseable dates in 'Date'.",
+      "hint": "Verify date format or normalize upstream before ingestion."
+    },
+    {
+      "severity": "HIGH",
+      "check": "normalize",
+      "message": "34 rows have invalid hours in 'HR'.",
+      "hint": "Ensure hour column is numeric and within 1-24."
+    },
+    {
+      "severity": "MEDIUM",
+      "check": "normalize",
+      "message": "Configured hour column missing; auto-detected HR column.",
+      "hint": "Confirm whether CAISO file uses HE or HR semantics."
+    },
+    {
+      "severity": "MEDIUM",
+      "check": "normalize",
+      "message": "Configured total zone missing; auto-mapped CAISO to CAISO Total.",
+      "hint": "Verify whether total column should be CAISO or CAISO Total."
+    },
+    {
+      "severity": "MEDIUM",
+      "check": "completeness",
+      "message": "Missing 130 hourly observations across zones. Completeness 99.81%.",
+      "hint": "Identify gaps by date/zone and reconcile missing hours with ISO source files."
+    },
+    {
+      "severity": "MEDIUM",
+      "check": "sanity",
+      "message": "13031 hourly changes exceed spike thresholds.",
+      "hint": "Review sudden load jumps and verify they align with ISO event notes."
+    }
+  ],
+  "metrics": {
+    "rows": 69480,
+    "completeness": {
+      "expected_rows": 69480,
+      "actual_rows": 69350,
+      "completeness_pct": 0.9981289579735175,
+      "missing_hours_total": 130,
+      "missing_zones_per_hour": 0,
+      "missing_by_day": {
+        "2024-11-03": 125,
+        "2025-03-09": 5
+      }
+    },
+    "consistency": {
+      "violation_count": 0,
+      "max_abs_error": 1.6413919899969187,
+      "max_pct_error": 7.866063507888298e-05,
+      "mean_abs_error": 0.0014379342267848523,
+      "mean_pct_error": 6.084339145432628e-08
+    },
+    "sanity": {
+      "negative_count": 0,
+      "spike_count": 13031,
+      "flatline_count": 0
+    },
+    "dst": {
+      "total_days": 579,
+      "normal_days": 577,
+      "spring_forward_days": 1,
+      "fall_back_days": 1,
+      "dst_days": 2
+    }
+  },
+  "trust": {
+    "score": 0.0,
+    "level": "DO_NOT_USE",
+    "breakdown": {
+      "missing_hours": 130,
+      "missing_zones": 0,
+      "dst_days": 2,
+      "consistency_violations": 0,
+      "anomaly_events": 13031
+    }
+  }
+}

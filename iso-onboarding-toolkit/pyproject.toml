@@ -1,0 +1,37 @@
+[project]
+name = "iso-onboarding-toolkit"
+version = "0.1.0"
+description = "ISO feed onboarding toolkit and data quality reporter"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+  { name = "Nira Energy" }
+]
+dependencies = [
+  "pandas>=2.0",
+  "PyYAML>=6.0",
+  "openpyxl>=3.1.0"
+]
+
+[project.scripts]
+iso-toolkit = "iso_toolkit.cli:main"
+iso-trust = "iso_trust.cli:main"
+
+[project.optional-dependencies]
+dagster = [
+  "dagster>=1.6.0"
+]
+prefect = [
+  "prefect>=2.14.0"
+]
+
+[build-system]
+requires = ["setuptools>=65", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
